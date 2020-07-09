@@ -1,0 +1,179 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" href="favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#000000">
+    <link rel="apple-touch-icon" href="logo192.png">
+    <title>Soundings</title>
+    <style>
+        body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    </style>
+    <style>
+        .App-header {
+            background-color: #282c34;
+            padding-top: 10vh;
+            min-height: 10vh;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: calc(10px + 2vmin);
+            color: white;
+        }
+
+        .App-article {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .App-article div {
+            width: 800px;
+        }
+
+        @media (max-width: 850px) {
+            .App-article div {
+                width: 100%;
+                margin: 10px;
+            }
+            p, span{
+                margin:10px;
+            }
+            span {
+                text-align: center;
+            }
+        }
+
+        button{
+            margin: 20px 50px;
+            padding: 20px;
+            border-radius: 20px;
+        }
+
+        .bookmarklet {
+            display: inline-block;
+            padding: 0.5em;
+            margin: 0.5em;
+            color: #000000;
+            border: #000000 1px solid;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+        .small{
+            font-size: 0.8em;
+        }
+
+        #bookmarklet:hover {
+            background-color: lightgrey;
+        }
+
+        #bookmarklet:hover + #tooltip{
+            display: flex;
+            justify-content: center;
+        }
+        #tooltip {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10vh;
+            color: white;
+            background-color: black;
+        }
+
+        .button {
+            margin: 20px 50px;
+            padding: 20px;
+            border-radius: 20px;
+            font-size: 1em;
+            background-color: #f8f9fa;
+            color: #212529;
+            cursor: pointer;
+            border: 1px #dae0e5 solid;
+        }
+
+        .button:hover{
+            color: #212529;
+            background-color: #e2e6ea;
+            border-color: #dae0e5;
+        }
+
+        .button:focus{
+            outline: none;
+        }
+    </style>
+</head>
+    <body>
+        <div class="App">
+
+            <header class="App-header">
+                <h1>Soundings</h1>
+            </header>
+            <article class="App-article">
+                <a class="bookmarklet button" id="bookmarklet" href="REPLACE_ME">
+                    Soundings
+                </a>
+                <div id="tooltip">
+                    <h2>↑ Click the button and drag it to up here ↑</h2>
+                </div>
+                <span id="drag">
+                   ↑ Drag this button to your bookmarks bar or folder ↑
+                </span>
+                <span id="try" class="small">
+                    Then click the bookmark on any given website 
+                     - Or click the button here to try out a demo
+                </span>
+                <div>
+                    <p>
+                        This bookmarklet is an invitation for you to willfully interrupt your web browsing. What ways do you check in with yourself when reading the news? reading an email? watching a video? How do you feel? And how does your body feel? We invite you to check in.
+                    </p>
+                    <p>
+                        <i>Untitled (TBD SOON)</i> is a moment to let the noise of constant-attention-turbo-capitalism fade into the background. Here we read you some selections of poems by Black Feminist Poets & Scholars: Audre Lorde and Alexis Pauline Gumbs, and invite you to read some lines from Claudia Rankine. We will invite you to consider how fully you can feel in your daily doings, how the erotic is a well of everyday affirmation, how the power of naming the feeling allows for power to transform whats' possible, and that "wanting to want to" is reason enough.
+                    </p>
+                    <p>
+                        <u>Relations</u> <br>
+                        <em>M Archive. After the End of the World</em> by Alexis Pauline Gumbs. Durham, NC: Duke University Press, 2018.<br>
+<em>Sister outsider: essays and speeches</em>, "Poetry is not a Luxury" and "Uses of the Erotic: The Erotic As Power" by Audre Lorde. Trumansberg, NY: Crossing Press, 1984.<br>
+<em>Citizen: An American Lyric</em> by Claudia Rankine. Minneapolis, MN: Graywolf Press, 2014.<br>
+                    </p>
+                </div>
+            </article>
+        </div>
+    </body>
+<script>
+    const isFirefox = typeof InstallTrigger !== 'undefined';
+    if (isFirefox){
+    	document.getElementById("drag").innerText = "We are sorry but this bookmarklet doesn't work in Firefox";
+    	document.getElementById("try").innerText = "You can click the button to try it out here or open this web page in Chrome or Safari for the full experience";
+    	document.getElementById("tooltip").remove();
+    }
+    const toMatch = [
+        /Android/i,
+        /webOS/i,
+        /iPhone/i,
+        /iPad/i,
+        /iPod/i,
+        /BlackBerry/i,
+        /Windows Phone/i
+    ];
+    const isMobile = toMatch.some((toMatchItem) => {
+        return navigator.userAgent.match(toMatchItem);
+    });
+    if (isMobile){
+        document.getElementById("drag").innerText = "We are sorry but this bookmarklet doesn't work on smartphones or tablets";
+    	document.getElementById("try").innerText = "You can click the button to try it out here or open this web page on a computer for the full experience";
+    	document.getElementById("tooltip").remove();
+    }
+</script>
+</html>

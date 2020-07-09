@@ -1,0 +1,139 @@
+.overlay {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 20px;
+    position: fixed;
+	color: white;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+	height: 100%;
+	width: 100%;
+    z-index: 2147483647;
+}
+
+.modal {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+
+.modal blockquote{
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+    font-size: 1.3em;
+    clear:both;
+    border: none;
+    box-shadow: none;
+    position: absolute;
+    width: 30%;
+    font-family: 'Arial', sans-serif;
+    animation: fadein 5s;
+}
+
+.quoteTop{
+    top: 5%;
+    left: 5%;
+}
+
+.quoteBottom{
+    bottom: 10%;
+    right: 10%;
+}
+
+.quoteFadeout {
+    transition: opacity 5s;
+    opacity: 0 !important;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+
+.button {
+    margin: 20px 50px;
+    padding: 20px;
+    border-radius: 20px;
+	font-size: 1em;
+    background-color: #f8f9fa;
+    color: #212529;
+    cursor: pointer;
+    border: 1px #dae0e5 solid;
+}
+
+.close {
+    position: absolute;
+    right: 32px;
+    top: 32px;
+    width: 32px;
+    height: 32px;
+    opacity: 0.7;
+    cursor: pointer;
+}
+.close:hover {
+    opacity: 1;
+}
+.close:before, .close:after {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 33px;
+    width: 2px;
+    background-color: white;
+}
+.close:before {
+    transform: rotate(45deg);
+}
+.close:after {
+    transform: rotate(-45deg);
+}
+
+/*Animation */
+:global(.overlay-appear){
+    opacity: 0;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+:global(.overlay-appear-done){
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    opacity: 1;
+    transition: opacity 5000ms;
+}
+
+:global(.overlay-exit){
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+:global(.overlay-exit-done){
+    transition: opacity 6000ms ease-in-out, visibility 6000ms step-end;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.video {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    background-size: cover;
+    overflow: hidden;
+    animation: videoOpacity 60s infinite;
+    filter: opacity(0.1);
+}
+
+@keyframes videoOpacity {
+    0%   { filter: opacity(0.3);}
+    50%  { filter: opacity(0.8);}
+    100%  { filter: opacity(0.3);}
+}
